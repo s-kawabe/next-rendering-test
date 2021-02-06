@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps<{ date: string }> = async () => {
     props: {
       date: day().tz('Asia/Tokyo').format('YYYY/MM/DD HH:mm:ss'),
     },
+    // revalidate: 前回から何秒いないのアクセスを無視するか
     revalidate: 1,
   }
 }
