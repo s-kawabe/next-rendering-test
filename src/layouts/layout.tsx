@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
-import { Footer } from 'src/components/footer'
-import { Header } from 'src/components/header'
+
+import { Footer } from '@/layouts/footer'
+import { Header } from '@/layouts/header'
 
 export const Layout = (props: { children: ReactNode }) => {
   return (

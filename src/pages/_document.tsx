@@ -11,6 +11,11 @@ class MyDocument extends Document {
       <Html lang="ja">
         <Head>
           <meta name="description" content="Hello, World!" />
+          <meta property="og:type" content=" website" />
+          <meta property="og:title" content="Next Rendering Demo" />
+          <meta property="og:description" content="Next.jsのレンダリングのデモ。勉強用" />
+          <meta property="og:site_name" content="Next Rendering Demo" />
+          <meta property="og:image" content="/svg/monster_home.svg" />
         </Head>
         <body>
           <Main />

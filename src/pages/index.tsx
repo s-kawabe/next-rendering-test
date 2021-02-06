@@ -1,23 +1,22 @@
 import Head from 'next/head'
 
-import { Layout } from '@/components/layout'
+import { Container } from '@/components/Container/index'
+import { RenderedAt } from '@/components/RenderedAt/index'
+import { RenderIcon } from '@/components/RenderIcon/index'
+import { RenderNav } from '@/components/RenderNav/index'
 
 const Home = () => {
   return (
-    <Layout>
+    <>
       <Head>
-        <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>next Rendering demo</title>
       </Head>
-      <h2>Hello Rendering Test</h2>
-      <button
-        onClick={() => {
-          window.alert('Hello, World!')
-        }}
-      >
-        Button
-      </button>
-    </Layout>
+      <Container>
+        <RenderIcon />
+        <RenderedAt />
+        <RenderNav />
+      </Container>
+    </>
   )
 }
 

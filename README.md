@@ -1,7 +1,10 @@
-# Next.js starter template.
+# Next.js Rendering Demo
 
-- Next.js
-- TypeScript
-- ESLint
-- Prettier
+- SSG
+- SSR
+- CSR
+- ISR
 
+I had no idea abount ISR at all...
+
+## What ISR?
