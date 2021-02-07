@@ -261,11 +261,57 @@ chakraUI を使う場合、恐らく preview.tsx で ChakraProvider を<br>
 使い storybook のコンポーネントをラッピングしてあげる必要がある。
 
 ```tsx
+import * as React from 'react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { StoryContext } from '@storybook/react'
 
+/**
+ * Add global context for RTL-LTR switching
+ */
+export const globalTypes = {
+  direction: {
+    name: 'Direction',
+    description: 'Direction for layout',
+    defaultValue: 'LTR',
+    toolbar: {
+      icon: 'globe',
+      items: ['LTR', 'RTL'],
+    },
+  },
+}
+
+const withChakra = (StoryFn: Function, context: StoryContext) => {
+  const { direction } = context.globals
+  const dir = direction.toLowerCase()
+  return (
+    <ChakraProvider theme={extendTheme({ direction: dir })}>
+      <div dir={dir} id="story-wrapper" style={{ minHeight: '100vh' }}>
+        <StoryFn />
+      </div>
+    </ChakraProvider>
+  )
+}
+
+export const decorators = [withChakra]
 ```
 
 ---
 
 ### さいごに
+
+Emotion を react と storybook で共存させるためには<br>
+JSX プラグマを書いてはいけない。<br>
+なので`@emotion/babel-preset-css-prop`をインストールする。<br>
+babel と tsconfig.json の設定を書き換える<br>
+https://qiita.com/282Haniwa/items/243f00c39ee7c992d7f7<br>
+<br>
+
+**上記をやると storybook の emotion スタイルはあたるが<br>
+chakra のスタイルが外れてしまった。**<br>
+→Emotion は styled を使ってコンポーネントに手を加えるようにする。
+
+<br><br>
+emotion で storybook にもグローバルスタイルを適用する方法<br>
+https://uga-box.hatenablog.com/entry/2020/11/28/000000
 
 ---

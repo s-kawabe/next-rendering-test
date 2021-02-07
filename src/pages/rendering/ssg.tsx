@@ -1,5 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
+// eslint-disable-next-line no-restricted-imports
+import React from 'react'
 
 import { Container } from '@/components/Container'
 import { RenderedAt } from '@/components/RenderedAt'

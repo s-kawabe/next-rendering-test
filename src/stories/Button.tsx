@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import './button.css'
 
-export interface ButtonProps {
+export type ButtonProps = {
   /**
    * Is this the principal call to action on the page?
    */

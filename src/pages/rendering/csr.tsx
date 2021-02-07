@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import React from 'react'
 
 import { Container } from '@/components/Container/index'
 import { RenderedAt } from '@/components/RenderedAt'
