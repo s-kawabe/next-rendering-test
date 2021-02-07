@@ -165,3 +165,107 @@ if (router.isFallback) {
 
 return <ProductDetail product={product} />
 ```
+
+# Storybook を導入する
+
+**スタイルガイド作成ツールには大きく分けてふたつの種類がある。**
+
+- JavaScript で記述するもの<br>
+- Markdown で記述するもの。<br>
+  JavaScript で記述していくタイプは作るのが多少面倒だが柔軟性があって、機能も豊富。<br>
+  Markdown で記述するタイプは手軽に書けるが機能が絞られていて、動的な要素が少ない。<br>
+
+---
+
+## Storybook は TypeScript をサポートしている
+
+Setting up TypeScript with babel-loader
+を見ながらやれば OK
+
+---
+
+## Storybook インストール
+
+### インストール
+
+アプリのルートディレクトリで以下を実行する
+babel-loader や storybook の addon が色々インストールされる。
+
+```
+npx sb init
+```
+
+この時点で既に`yarn storybook`が使用でき、実行すると
+`http://localhost:6006/`に Storybook のページが立ち上がる
+
+---
+
+### ストーリーとは？
+
+UI コンポーネントのレンダリングされた状態をキャプチャする。
+
+```tsx
+// Button.stories.tsx
+
+import React from 'react'
+import { Button } from './Button'
+
+export const Primary: React.VFC<{}> = () => <Button primary>Button</Button>
+```
+
+---
+
+### ストーリーを閲覧する
+
+コンポーネントの props には型定義が必須？
+以下の様に props の各引数にコメントを書くことで storybook の docs に
+良い感じにコメントが表示される
+
+```tsx
+export interface ButtonProps {
+  /**
+   * Is this the principal call to action on the page?
+   */
+  primary?: boolean
+  /**
+   * What background color to use
+   */
+  backgroundColor?: string
+  /**
+   * How large should the button be?
+   */
+  size?: 'small' | 'medium' | 'large'
+  /**
+   * Button contents
+   */
+  label: string
+  /**
+   * Optional click handler
+   */
+  onClick?: () => void
+}
+```
+
+**アドオン** <br>
+**Controls**でコンポーネントの状態をインタラクティブに変更することができる。<br>
+**Actions**でインタラクションがコールバックを介して正しい出力を生成することを確認するのに役立ちます。
+たとえば、ヘッダーコンポーネントの「ログイン」ストーリーを表示する場合、
+「ログアウト」ボタンをクリック onLogout すると、
+ヘッダーを使用したコンポーネントによって提供されるコールバックがトリガーされることを確認できます。
+
+---
+
+### セットアップ
+
+chakraUI を使う場合、恐らく preview.tsx で ChakraProvider を<br>
+使い storybook のコンポーネントをラッピングしてあげる必要がある。
+
+```tsx
+
+```
+
+---
+
+### さいごに
+
+---

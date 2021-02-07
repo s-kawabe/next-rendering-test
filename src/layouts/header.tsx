@@ -1,19 +1,21 @@
+import { BellIcon, ChatIcon } from '@chakra-ui/icons'
+import { Heading, IconButton } from '@chakra-ui/react'
 import Link from 'next/link'
 
 const items = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
+  { href: '/', label: 'Home', color: 'teal', icon: <ChatIcon /> },
+  { href: '/about', label: 'About', color: 'green', icon: <BellIcon /> },
 ]
 
 export const Header = () => {
   return (
     <header>
-      <h1>Title</h1>
+      <Heading m={10}>Next.js Rendering Test</Heading>
       <nav>
-        {items.map(({ href, label }) => {
+        {items.map(({ href, label, color, icon }) => {
           return (
             <Link key={href} href={href}>
-              <a style={{ display: 'inline-block', padding: 12 }}>{label}</a>
+              <IconButton ml={5} colorScheme={color} aria-label={label} size="lg" icon={icon} />
             </Link>
           )
         })}
